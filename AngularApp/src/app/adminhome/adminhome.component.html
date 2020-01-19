@@ -1,0 +1,34 @@
+
+
+<div class="container-fluid">
+    
+    <div class="row">
+            <div class="col-md-3">
+                    <div class="vertical-menu">
+                            <a routerLink="/admin/home" class="active">Dashboard</a>
+                            <a routerLink="/admin/home/news">News</a>
+                            <a routerLink="/admin/home/series">Tournaments</a>
+                            <a routerLink="/admin/home/pointstable">Points table</a>
+                          <a routerLink="/admin/home/teams">Teams</a>
+                          <a routerLink="/admin/home/player">Players</a>
+                          <a routerLink="/admin/home/match">Match</a>
+                          <a routerLink="/admin/home/addnewtournament">Add tournament</a>
+                          <a routerLink="/admin/home/addnewmatch">Add match</a>
+                          <a routerLink="/admin/home/addnewteam">Add team</a>
+                          <a routerLink="/admin/home/addnewplayer">Add player</a>
+                          <a routerLink="/admin/home/addnewnews">Add news</a>
+                          <a routerLink="/admin/home/addpointstable">Add points table</a>
+                          <a (click)="signout()">Logout</a>
+
+                          
+                        </div>
+    
+            </div>
+            <div class="col-md-9">
+                   <router-outlet></router-outlet>
+                   
+    
+            </div>
+    </div>
+    
+</div>

@@ -1,0 +1,44 @@
+<h2 class="text-center" style="background-color: #3578E5">Add Tournament</h2>
+<br>
+
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-9">
+            <form #myForm="ngForm" (ngSubmit)="onAdd(myForm)">
+                <div class="form-group">
+                    <label for="">Tournament name</label>
+                    <input type="text" ngModel class="form-control" id="name" name="name"
+                        placeholder="Enter tournament name">
+                </div>
+                <div class="form-group">
+                    <label for="">Organizer name</label>
+                    <input type="text" ngModel class="form-control" id="organizer" name="organizer"
+                        placeholder="Enter organizer name">
+                </div>
+                <div class="form-group">
+                    <label for="">Owner name</label>
+                    <input type="text" ngModel class="form-control" id="owner" name="owner"
+                        placeholder="Enter owner">
+                </div>
+                <td><img style="height: 100px;width: 100px" src="data:image/gif;base64,{{emp.image}}" alt=""><br>
+                    <label for=""><b>Tournament logo</b></label>
+                    <input (change)="onSelectFile($event)" style="border: none" type="file" class="form-control">
+                    <div class="form-group">
+                            <label for="">Start Date</label>
+                            <input type="date" ngModel class="form-control" id="startDate" name="startDate" style="width: 160px">
+                        </div>
+                        <div class="form-group">
+                                <label for="">End Date</label>
+                                <input type="date" ngModel class="form-control" id="endDate" name="endDate" style="width: 160px">
+                            </div>
+                
+                    <span class="label label-warning">{{message}}</span>
+
+                    <button type="submit" class="btn btn-success">Add Tournament</button>
+            </form>
+        </div>
+    </div>
+
+</div>

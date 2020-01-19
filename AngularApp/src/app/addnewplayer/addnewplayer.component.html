@@ -1,0 +1,53 @@
+<h2 class="text-center" style="background-color: #3578E5">Add Player</h2>
+<br>
+
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-9">
+            <form #myForm="ngForm" (ngSubmit)="onAdd(myForm)">
+                <div class="form-group">
+                    <label for="">Player name</label>
+                    <input type="text" ngModel class="form-control" id="name" name="name"
+                        placeholder="Enter player name">
+                </div>
+                <div class="form-group">
+                    <label for="">Age</label>
+                    <input type="number" ngModel class="form-control" id="age" name="age" style="width:150px"
+                        placeholder="Enter age">
+                </div>
+                <div class="form-group">
+                    <label for="">contact no</label>
+                    <input type="text" ngModel class="form-control" id="contact" name="contact"
+                        placeholder="Enter contact no">
+                </div>
+                <td><img style="height: 100px;width: 100px" src="data:image/gif;base64,{{emp.image}}" alt=""><br>
+                    <label for=""><b>Profile photo</b></label>
+                    <input (change)="onSelectFile($event)" style="border: none" type="file" class="form-control">
+                    <div class="form-group">
+                        <label for="">Date Of Birth</label>
+                        <input type="date" ngModel class="form-control" id="dob" name="dob" style="width: 160px">
+                    </div>
+                    <div class="form-group">
+                        <label for="sel1">Select role:</label>
+                        <select class="form-control" id="role" name="role">
+                            <option>BATSMAN</option>
+                            <option>BOWLER</option>
+                            <option>WICKETKEEPER</option>
+                            <option>ALLROUNDER</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Team id</label>
+                        <input type="text" ngModel class="form-control" id="teamId" name="teamId"
+                            placeholder="Enter team id">
+                    </div>
+                    <span class="label label-warning">{{message}}</span>
+
+                    <button type="submit" class="btn btn-success">Add Player</button>
+            </form>
+        </div>
+    </div>
+
+</div>

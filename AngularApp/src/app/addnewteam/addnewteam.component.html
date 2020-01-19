@@ -1,0 +1,41 @@
+<h2 class="text-center" style="background-color: #3578E5">Add Team</h2>
+<br>
+
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-9">
+            <form #myForm="ngForm" (ngSubmit)="onAdd(myForm)">
+                <div class="form-group">
+                    <label for="">Team name</label>
+                    <input type="text" ngModel class="form-control" id="umpire" name="umpire"
+                        placeholder="Enter umpire name">
+                </div>
+                <div class="form-group">
+                    <label for="">Location</label>
+                    <input type="text" ngModel class="form-control" id="location" name="location"
+                        placeholder="Enter location">
+                </div>
+                <div class="form-group">
+                    <label for="">Owner</label>
+                    <input type="text" ngModel class="form-control" id="owner" name="owner" placeholder="Enter owner">
+                </div>
+                <div class="form-group">
+                    <label for="">coach</label>
+                    <input type="text" ngModel class="form-control" id="coach" name="coach" placeholder="Enter coach">
+                </div>
+                <td><img style="height: 100px;width: 100px" src="data:image/gif;base64,{{emp.image}}" alt=""><br>
+                    <label for=""><b>Team logo</b></label>
+                    <input (change)="onSelectFile($event)" style="border: none" type="file" class="form-control">
+
+
+
+                <span class="label label-warning">{{message}}</span>
+
+                <button type="submit" class="btn btn-success">Add Team</button>
+            </form>
+        </div>
+    </div>
+
+</div>

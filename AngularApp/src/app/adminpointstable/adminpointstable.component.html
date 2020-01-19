@@ -1,0 +1,34 @@
+<h2 class="text-center" style="background-color: aqua">Points table</h2>
+
+<table class="table table-striped table-hover table-responsive">
+        <thead>
+            <tr>
+                    <th>id</th>
+                    <th>played</th>
+                    <th>won</th>
+                    <th>lost</th>
+                    <th>draw</th>
+                    <th>netRR</th>
+                    <th>points</th>
+                    <th>teamId</th>
+                    <th>tournamentId</th>
+                </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let n of points">
+                    <td>{{n.id}}</td>
+                    <td>{{n.played}}</td>
+                    <td>{{n.won}}</td>
+                    <td>{{n.lost}}</td>
+                    <td>{{n.draw}}</td>
+                    <td>{{n.netRR}}</td>
+                    <td>{{n.points}}</td>
+                    <td>{{n.teamId}}</td>
+                    <td>{{n.tournamentId}}</td>
+                   
+                    <td><a routerLink="/admin/home/editpointstable/{{n.id}}">Edit</a></td>
+                    <td><a >Delete</a></td>
+            </tr>
+        </tbody>
+    </table>
+    

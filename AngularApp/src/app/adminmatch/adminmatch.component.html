@@ -1,0 +1,29 @@
+
+<table class="table table-striped table-hover table-responsive">
+        <thead>
+            <tr>
+                    <th>id</th>
+                    <th>date</th>
+                    <th>umpire</th>
+                    <th>hometeam</th>
+                    <th>awayteam</th>
+                    <th>location</th>
+                    <th>result</th>
+                    
+                  
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let n of match">
+                    <td>{{n.id}}</td>
+                    <td>{{n.date}}</td>
+                    <td>{{n.umpire}}</td>
+                    <td>{{n.location}}</td>
+                    <td>{{n.hometeam}}</td>
+                    <td>{{n.awayteam}}</td>
+                    <td><a routerLink="/admin/home/editmatch/{{n.id}}">Edit</a></td>
+                    <td><a >Delete</a></td>
+            </tr>
+        </tbody>
+    </table>
+    

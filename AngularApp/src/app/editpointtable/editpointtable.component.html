@@ -1,0 +1,64 @@
+<h2 class="text-center" style="background-color: #3578E5">Update points table</h2>
+<br>
+
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-9">
+            <form #myForm="ngForm" (ngSubmit)="onAdd(myForm)">
+                    <div class="form-group">
+                            <label for="">id</label>
+                            <input type="number" ngModel class="form-control" id="id" name="id"
+                                placeholder="1" readonly>
+                        </div>
+                        <div class="form-group">
+                                <label for="">played</label>
+                                <input type="number" ngModel class="form-control" id="played" name="played"
+                                    placeholder="Enter played">
+                            </div>
+                <div class="form-group">
+                    <label for="">won</label>
+                    <input type="number" ngModel class="form-control" id="won" name="won"
+                        placeholder="Enter won">
+                </div>
+                <div class="form-group">
+                    <label for="">lost</label>
+                    <input type="number" ngModel class="form-control" id="lost" name="lost"
+                        placeholder="Enter lost">
+                </div>
+                <div class="form-group">
+                    <label for="">draw</label>
+                    <input type="number" ngModel class="form-control" id="draw" name="draw"
+                        placeholder="Enter draw">
+                </div>
+                <div class="form-group">
+                    <label for="">netRR</label>
+                    <input type="number" ngModel class="form-control" id="netRR" name="netRR"
+                        placeholder="Enter netRR">
+                </div>
+                <div class="form-group">
+                    <label for="">points</label>
+                    <input type="number" ngModel class="form-control" id="points" name="points"
+                        placeholder="Enter points">
+                </div>
+                <div class="form-group">
+                    <label for="">teamId</label>
+                    <input type="number" ngModel class="form-control" id="teamId" name="teamId"
+                        placeholder="Enter teamId">
+                </div>
+                <div class="form-group">
+                    <label for="">tournamentsId</label>
+                    <input type="number" ngModel class="form-control" id="tournamentsId" name="tournamentsId"
+                        placeholder="Enter tournamentsId">
+                </div>
+
+                <span class="label label-warning">{{message}}</span>
+
+                <button routerLink="/admin/home/pointstable"  type="submit" class="btn btn-success">Update points table</button>
+                <button routerLink="/admin/home/pointstable" class="btn btn-danger">cancel</button>
+            </form>
+        </div>
+    </div>
+
+</div>

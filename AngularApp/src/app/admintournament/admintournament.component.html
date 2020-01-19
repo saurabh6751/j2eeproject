@@ -1,0 +1,28 @@
+
+<table class="table table-striped table-hover table-responsive">
+        <thead>
+            <tr>
+                    <th>id</th>
+                    <th>date</th>
+                    <th>organizer</th>
+                    <th>owner</th>
+                    <th>logo</th>
+                    <th>start date</th>
+                    <th>end date</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let n of tournament">
+                    <td>{{n.id}}</td>
+                    <td>{{n.name}}</td>
+                    <td>{{n.organizer}}</td>
+                    <td>{{n.owner}}</td>
+                    <td><img src="assets/image/2.jpg" style="height: 100px;width: 100px;"></td>
+                    <td>{{n.startdate}}</td>
+                    <td>{{n.enddate}}</td>
+                    <td><a routerLink="/admin/home/edittournament/{{n.id}}">Edit</a></td>
+                    <td><a >Delete</a></td>
+            </tr>
+        </tbody>
+    </table>
+    
