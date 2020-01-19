@@ -9,7 +9,7 @@ public class BattingScorecard {
 	
 	private Integer Id,runs,balls,fours,sixes;
 	private String name,wicketTaker,fielder,wicketStatus;
-	private double strikeRate,extras;
+	private double strikeRate;
 	private TeamInMatch TeamInMatchId;
 	public BattingScorecard() {
 		super();
