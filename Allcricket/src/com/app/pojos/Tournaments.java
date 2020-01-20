@@ -6,22 +6,24 @@ import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 @Entity
-@Table(name="tournaments")
+@Table(name="Tournaments")
 public class Tournaments {
 
 	private Integer id;
 	private String name,organizer,owner;
 	private byte[] logo;
-	@JsonFormat(pattern = "dd-MM-yyyy")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date startDate;
-	@JsonFormat(pattern = "dd-MM-yyyy")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date endDate;
 	private Set<Teams> participatingTeams = new HashSet<>();
-	private PointTable pointTable;
+	private List<Matches> matches = new ArrayList<>();
 	public Tournaments() {
 	}
+
+
 	public Tournaments(String name, String organizer, String owner, byte[] logo, Date startDate, Date endDate,
-			Set<Teams> participatingTeams, PointTable pointTable) {
+			Set<Teams> participatingTeams, List<Matches> matches) {
 		super();
 		this.name = name;
 		this.organizer = organizer;
@@ -30,8 +32,9 @@ public class Tournaments {
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.participatingTeams = participatingTeams;
-		this.pointTable = pointTable;
+		this.matches = matches;
 	}
+
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -70,7 +73,6 @@ public class Tournaments {
 		this.logo = logo;
 	}
 	
-	@Temporal(TemporalType.DATE)
 	@Column(name = "start_date")
 	public Date getStartDate() {
 		return startDate;
@@ -78,7 +80,6 @@ public class Tournaments {
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
-	@Temporal(TemporalType.DATE)
 	@Column(name = "end_date")
 	public Date getEndDate() {
 		return endDate;
@@ -94,11 +95,6 @@ public class Tournaments {
 	public void setParticipatingTeams(Set<Teams> participatingTeams) {
 		this.participatingTeams = participatingTeams;
 	}
-	@OneToOne
-	@JoinColumn(name = "point_table_id")
-	public PointTable getPointTable() {
-		return pointTable;
-	}
 	//helper methods
 	public void addTeam(Teams t)
 	{
@@ -110,80 +106,34 @@ public class Tournaments {
 		participatingTeams.remove(t);
 		t.getTournament().remove(this);
 	}
-
-	public void setPointTable(PointTable pointTable) {
-		this.pointTable = pointTable;
+	@OneToMany(mappedBy = "tournamentId", cascade = CascadeType.ALL, orphanRemoval = true)
+	public List<Matches> getMatches() {
+		return matches;
+	}
+	public void setMatches(List<Matches> matches) {
+		this.matches = matches;
+	}
+	//helper methods
+	public void addMatch(Matches m)
+	{
+		matches.add(m);
+		m.setTournamentId(this);;
+	}
+	public void removeMatch(Matches m)
+	{
+		matches.remove(m);
+		m.setTournamentId(null);;
 	}
 
 
 	@Override
 	public String toString() {
-		return "Tournaments [name=" + name + ", organizer=" + organizer + ", owner=" + owner + ", logo="
+		return "Tournaments [id=" + id + ", name=" + name + ", organizer=" + organizer + ", owner=" + owner + ", logo="
 				+ Arrays.toString(logo) + ", startDate=" + startDate + ", endDate=" + endDate + ", participatingTeams="
-				+ participatingTeams + "]";
+				+ participatingTeams + ", matches=" + matches + "]";
 	}
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((endDate == null) ? 0 : endDate.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + Arrays.hashCode(logo);
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((organizer == null) ? 0 : organizer.hashCode());
-		result = prime * result + ((owner == null) ? 0 : owner.hashCode());
-		result = prime * result + ((participatingTeams == null) ? 0 : participatingTeams.hashCode());
-		result = prime * result + ((startDate == null) ? 0 : startDate.hashCode());
-		return result;
-	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Tournaments other = (Tournaments) obj;
-		if (endDate == null) {
-			if (other.endDate != null)
-				return false;
-		} else if (!endDate.equals(other.endDate))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (!Arrays.equals(logo, other.logo))
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		if (organizer == null) {
-			if (other.organizer != null)
-				return false;
-		} else if (!organizer.equals(other.organizer))
-			return false;
-		if (owner == null) {
-			if (other.owner != null)
-				return false;
-		} else if (!owner.equals(other.owner))
-			return false;
-		if (participatingTeams == null) {
-			if (other.participatingTeams != null)
-				return false;
-		} else if (!participatingTeams.equals(other.participatingTeams))
-			return false;
-		if (startDate == null) {
-			if (other.startDate != null)
-				return false;
-		} else if (!startDate.equals(other.startDate))
-			return false;
-		return true;
-	}
+	
+
 	
 	
 }

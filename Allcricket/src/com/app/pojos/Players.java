@@ -5,28 +5,31 @@ import java.util.Date;
 
 import javax.persistence.*;
 @Entity
-@Table(name = "players")
+@Table(name = "Players")
 public class Players {
 	private Integer Id,age;
-	private String playerName,contact;
-	private byte[] playerPhoto;
+	private String name,contact;
+	private byte[] photo;
 	private Date dob;
 	private PlayerType role;
 	private Teams teamId;
 	public Players() {
 		// TODO Auto-generated constructor stub
 	}
-	public Players(Integer age, String playerName, String contact, byte[] playerPhoto, Date dob, PlayerType role,
-			Teams teamId) {
+
+
+	public Players(Integer age, String name, String contact, byte[] photo, Date dob, PlayerType role, Teams teamId) {
 		super();
 		this.age = age;
-		this.playerName = playerName;
+		this.name = name;
 		this.contact = contact;
-		this.playerPhoto = playerPhoto;
+		this.photo = photo;
 		this.dob = dob;
 		this.role = role;
 		this.teamId = teamId;
 	}
+
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Integer getId() {
@@ -43,34 +46,41 @@ public class Players {
 		this.age = age;
 	}
 	@Column(length = 30)
-	public String getPlayerName() {
-		return playerName;
+	public String getName() {
+		return name;
 	}
-	public void setPlayerName(String playerName) {
-		this.playerName = playerName;
+
+	public void setName(String name) {
+		this.name = name;
 	}
 	@Column(length = 30)
 	public String getContact() {
 		return contact;
 	}
+	
+
 	public void setContact(String contact) {
 		this.contact = contact;
 	}
 	@Lob
-	public byte[] getPlayerPhoto() {
-		return playerPhoto;
+	public byte[] getPhoto() {
+		return photo;
 	}
-	public void setPlayerPhoto(byte[] playerPhoto) {
-		this.playerPhoto = playerPhoto;
+
+	public void setPhoto(byte[] photo) {
+		this.photo = photo;
 	}
 	@Temporal(TemporalType.DATE)
 	public Date getDob() {
 		return dob;
 	}
+	
+
 	public void setDob(Date dob) {
 		this.dob = dob;
 	}
 	@Column(length = 30)
+	@Enumerated
 	public PlayerType getRole() {
 		return role;
 	}
@@ -85,12 +95,13 @@ public class Players {
 	public void setTeamId(Teams teamId) {
 		this.teamId = teamId;
 	}
+
 	@Override
 	public String toString() {
-		return "Players [Id=" + Id + ", age=" + age + ", playerName=" + playerName + ", contact=" + contact
-				+ ", playerPhoto=" + Arrays.toString(playerPhoto) + ", dob=" + dob + ", role=" + role + ", teamId="
-				+ teamId + "]";
+		return "Players [Id=" + Id + ", age=" + age + ", name=" + name + ", contact=" + contact + ", photo="
+				+ Arrays.toString(photo) + ", dob=" + dob + ", role=" + role + ", teamId=" + teamId + "]";
 	}
+
 	
 
 	
