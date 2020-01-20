@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.app.dao.IAdminDao;
 import com.app.pojos.Admin;
 
+
 @Service // B.L methods
 @Transactional
 public class AdminServiceImpl implements IAdminService {
@@ -21,9 +22,9 @@ public class AdminServiceImpl implements IAdminService {
 		return dao.getAllAdmins();
 	}
 	@Override
-	public Admin validateAdmin(Admin a) {
+	public Admin validateAdmin(String email1, String pass1) {
 		
-		return  dao.validateAdmin(a);
+		return  dao.validateAdmin(email1, pass1);
 	}
 	
 	
