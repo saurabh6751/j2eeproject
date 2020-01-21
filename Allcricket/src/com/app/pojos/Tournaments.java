@@ -36,6 +36,16 @@ public class Tournaments {
 	}
 
 
+	public Tournaments(String name, String organizer, String owner, Date startDate, Date endDate) {
+		super();
+		this.name = name;
+		this.organizer = organizer;
+		this.owner = owner;
+		this.startDate = startDate;
+		this.endDate = endDate;
+	}
+
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Integer getId() {

@@ -33,7 +33,21 @@ public class AdminController {
 			return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 		return new ResponseEntity<List<Admin>>(allAdmins, HttpStatus.OK);
 	}
-
+	@PostMapping
+	public ResponseEntity<?> validateAdmin(@RequestBody Admin a) {
+		System.out.println("in list admins"+a);
+		Admin a1;
+		try {
+			a1 = service.validateAdmin(a);
+			return new ResponseEntity<Admin>(a1, HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+			
+		}
+			
+		
+	}
 	
 
 

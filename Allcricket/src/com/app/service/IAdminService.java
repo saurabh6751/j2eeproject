@@ -6,6 +6,6 @@ import com.app.pojos.Admin;
 
 public interface IAdminService {
 	List<Admin> getAllAdmins();
-	Admin validateAdmin(String email, String pass);
+	Admin validateAdmin(Admin a);
 	
 }

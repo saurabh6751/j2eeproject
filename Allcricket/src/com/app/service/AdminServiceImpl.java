@@ -22,9 +22,9 @@ public class AdminServiceImpl implements IAdminService {
 		return dao.getAllAdmins();
 	}
 	@Override
-	public Admin validateAdmin(String email1, String pass1) {
+	public Admin validateAdmin(Admin a) {
 		
-		return  dao.validateAdmin(email1, pass1);
+		return  dao.validateAdmin(a);
 	}
 	
 	

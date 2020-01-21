@@ -32,10 +32,10 @@ public class AdminDaoImpl implements IAdminDao {
 
 
 	@Override
-	public Admin validateAdmin(String email1, String pass1) {
+	public Admin validateAdmin(Admin a) {
 		String jpql = "select v from Admin v where v.email=:em and v.password=:pass";
-		return sf.getCurrentSession().createQuery(jpql, Admin.class).setParameter("em", email1)
-				.setParameter("pass", pass1).getSingleResult();
+		return sf.getCurrentSession().createQuery(jpql, Admin.class).setParameter("em", a.getEmail())
+				.setParameter("pass", a.getPassword()).getSingleResult();
 	}
 
 }
