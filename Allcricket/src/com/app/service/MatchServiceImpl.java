@@ -6,16 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.app.dao.IAdminDao;
 import com.app.dao.IMatchDao;
+import com.app.dao.ITournamentDao;
 import com.app.pojos.Matches;
+import com.app.pojos.Tournaments;
 
 @Service // B.L methods
 @Transactional
 public class MatchServiceImpl implements IMatchService {
 	@Autowired
 	private IMatchDao dao;
-
+	@Autowired
+	private ITournamentDao dao2;
 	
 	@Override
 	public List<Matches> getAllMatches() {
@@ -41,8 +43,20 @@ public class MatchServiceImpl implements IMatchService {
 	@Override
 	public void deleteMatches(int matchId) {
 		Matches matchById = dao.getMatchesById(matchId);
+		
 		if(matchById != null)
-			dao.deleteMatches(matchById);	
+		{
+			Tournaments t = dao2.getTournamentsById(matchById.getTournamentId().getId());
+			t.removeMatch(matchById);
+			dao.deleteMatches(matchById);
+		}
 	}
+	
+	@Override
+	public Matches updateMatchDetails(Matches m) {
+		// TODO Auto-generated method stub
+		return dao.updateMatchDetails(m);
+	}
+	
 	
 }

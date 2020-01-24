@@ -10,5 +10,6 @@ public interface INewsService {
 	News addNewNews(News n);
 	void deleteNews(int newsId);
 	News getNewsById(int newsId);
+    News updateNewsDetails(News n);
 
 }

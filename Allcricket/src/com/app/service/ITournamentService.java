@@ -10,5 +10,5 @@ public interface ITournamentService {
 	Tournaments addTournamentDetails(Tournaments t);//t --transient 
 	void deleteTournamets(int tid );
 	Tournaments getTournamentsById(int tournamentId);
-
+    Tournaments updateTournamentDetails(Tournaments t);
 }

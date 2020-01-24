@@ -10,5 +10,5 @@ public interface ITeamService {
 	Teams addNewTeams(Teams t);
 	void deleteTeams(int teamId);
 	Teams getTeamsById(int teamId);
-
+    Teams updateTeamDetails(Teams t);
 }

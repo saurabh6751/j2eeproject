@@ -5,6 +5,7 @@ import java.util.*;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name="Tournaments")
 public class Tournaments {
@@ -13,8 +14,10 @@ public class Tournaments {
 	private String name,organizer,owner;
 	private byte[] logo;
 	@Temporal(TemporalType.TIMESTAMP)
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm")
 	private Date startDate;
 	@Temporal(TemporalType.TIMESTAMP)
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm")
 	private Date endDate;
 	private Set<Teams> participatingTeams = new HashSet<>();
 	private List<Matches> matches = new ArrayList<>();
@@ -39,6 +42,23 @@ public class Tournaments {
 	public Tournaments(String name, String organizer, String owner, Date startDate, Date endDate) {
 		super();
 		this.name = name;
+		this.organizer = organizer;
+		this.owner = owner;
+		this.startDate = startDate;
+		this.endDate = endDate;
+	}
+
+
+	public Tournaments(String name, String organizer, String owner) {
+		super();
+		this.name = name;
+		this.organizer = organizer;
+		this.owner = owner;
+	}
+
+
+	public Tournaments(String organizer, String owner, Date startDate, Date endDate) {
+		super();
 		this.organizer = organizer;
 		this.owner = owner;
 		this.startDate = startDate;
@@ -99,6 +119,7 @@ public class Tournaments {
 	}
 	@ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
 	@JoinTable(name = "tournament_teams",joinColumns = @JoinColumn(name="tournament_id"),inverseJoinColumns = @JoinColumn(name="team_id"))
+	@JsonIgnore
 	public Set<Teams> getParticipatingTeams() {
 		return participatingTeams;
 	}
@@ -116,7 +137,8 @@ public class Tournaments {
 		participatingTeams.remove(t);
 		t.getTournament().remove(this);
 	}
-	@OneToMany(mappedBy = "tournamentId", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "tournamentId", cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
+	@JsonIgnore
 	public List<Matches> getMatches() {
 		return matches;
 	}

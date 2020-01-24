@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.app.dao.IAdminDao;
 import com.app.dao.ITournamentDao;
 import com.app.pojos.Tournaments;
 
@@ -41,5 +40,10 @@ public class TournamentServiceImpl implements ITournamentService {
 		if(tournament != null)
 			dao.deleteTournamets(tournament);
 					
+	}
+	
+	@Override
+	public Tournaments updateTournamentDetails(Tournaments t) {
+		return dao.updateTournamentDetails(t);
 	}
 }

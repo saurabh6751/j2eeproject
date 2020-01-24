@@ -4,12 +4,16 @@ import java.util.Arrays;
 import java.util.Date;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "Players")
 public class Players {
 	private Integer Id,age;
 	private String name,contact;
 	private byte[] photo;
+	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date dob;
 	private PlayerType role;
 	private Teams teamId;
@@ -18,15 +22,13 @@ public class Players {
 	}
 
 
-	public Players(Integer age, String name, String contact, byte[] photo, Date dob, PlayerType role, Teams teamId) {
+	public Players(Integer age, String name, String contact, Date dob, PlayerType role) {
 		super();
 		this.age = age;
 		this.name = name;
 		this.contact = contact;
-		this.photo = photo;
 		this.dob = dob;
 		this.role = role;
-		this.teamId = teamId;
 	}
 
 
@@ -80,14 +82,14 @@ public class Players {
 		this.dob = dob;
 	}
 	@Column(length = 30)
-	@Enumerated
+	@Enumerated(EnumType.STRING)
 	public PlayerType getRole() {
 		return role;
 	}
 	public void setRole(PlayerType role) {
 		this.role = role;
 	}
-	@ManyToOne
+	@ManyToOne()
 	@JoinColumn(name = "team_id")
 	public Teams getTeamId() {
 		return teamId;

@@ -1,6 +1,5 @@
 package com.app.pojos;
 
-import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -16,10 +15,12 @@ import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+
 @Entity
 @Table(name = "news")
 public class News {
 	private Integer Id;
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm")
 	private Date date;
 	private String category;
 	private String heading;
@@ -29,12 +30,11 @@ public class News {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public News(Date date, String category, String heading, byte[] image, String description) {
+	public News(Date date, String category, String heading, String description) {
 		super();
 		this.date = date;
 		this.category = category;
 		this.heading = heading;
-		this.image = image;
 		this.description = description;
 	}
 	@Id

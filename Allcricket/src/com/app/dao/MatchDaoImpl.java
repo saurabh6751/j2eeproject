@@ -46,4 +46,9 @@ public class MatchDaoImpl implements IMatchDao {
 		public Matches getMatchesById(int matchId) {
 			return sf.getCurrentSession().get(Matches.class, matchId);
 		}
+		@Override
+		public Matches updateMatchDetails(Matches m) {
+			sf.getCurrentSession().update(m);
+			return m;
+		}
 }

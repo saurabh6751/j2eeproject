@@ -10,5 +10,5 @@ public interface ITeamDao {
 	Teams addNewTeams(Teams t);
 	void deleteTeams(Teams t);
 	Teams getTeamsById(int teamId);
-
+    Teams updateTeamDetails(Teams t);
 }

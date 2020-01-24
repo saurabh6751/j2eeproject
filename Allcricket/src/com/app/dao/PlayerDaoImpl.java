@@ -25,7 +25,7 @@ public class PlayerDaoImpl implements IPlayerDao{
 		@Override
 		public List<Players> getAllPlayers() {
 
-			String jpql = "select p from Players p";
+			String jpql = "select p from Players p join fetch p.teamId as team";
 			return sf.getCurrentSession().createQuery(jpql, Players.class).getResultList();
 		}
 		
@@ -45,5 +45,18 @@ public class PlayerDaoImpl implements IPlayerDao{
 		@Override
 		public Players getPlayersById(int playerId) {
 			return sf.getCurrentSession().get(Players.class,playerId );
+		}
+
+
+		@Override
+		public List<Players> getPlayerByName(String name) {
+			String jpql = "select p from Players p  where p.name=:name ";
+			return sf.getCurrentSession().createQuery(jpql,Players.class).setParameter("name", name).getResultList();
+		
+		}
+		@Override
+		public Players updatePlayerDetails(Players p) {
+			sf.getCurrentSession().update(p);
+			return p;
 		}
 }

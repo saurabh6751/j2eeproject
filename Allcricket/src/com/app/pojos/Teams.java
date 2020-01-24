@@ -4,6 +4,8 @@ import java.util.*;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "Teams")
 public class Teams {
@@ -29,6 +31,16 @@ public class Teams {
 		this.logo = logo;
 		this.tournament = tournament;
 		this.players = players;
+	}
+
+
+
+	public Teams(String name, String location, String owner, String coach) {
+		super();
+		this.name = name;
+		this.location = location;
+		this.owner = owner;
+		this.coach = coach;
 	}
 
 
@@ -89,6 +101,7 @@ public class Teams {
 	}
 
 	@ManyToMany(mappedBy = "participatingTeams")
+	@JsonIgnore
 	public Set<Tournaments> getTournament() {
 		return tournament;
 	}
@@ -108,7 +121,8 @@ public class Teams {
 		t.getParticipatingTeams().remove(this);
 	}
 
-	@OneToMany(mappedBy = "teamId", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "teamId", cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
+	@JsonIgnore
 	public List<Players> getPlayers() {
 		return players;
 	}

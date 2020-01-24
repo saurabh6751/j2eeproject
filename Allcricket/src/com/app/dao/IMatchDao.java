@@ -10,5 +10,5 @@ public interface IMatchDao {
 	Matches addNewMatches(Matches m);
 	void deleteMatches(Matches m);
 	Matches getMatchesById(int matchId);
-
+	 Matches updateMatchDetails(Matches m);
 }

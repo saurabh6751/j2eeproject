@@ -10,5 +10,5 @@ public interface ITournamentDao {
 	Tournaments addNewTournaments(Tournaments t);
 	void deleteTournamets(Tournaments t);
 	Tournaments getTournamentsById(int tournamentId);
-
+    Tournaments updateTournamentDetails(Tournaments t);
 }

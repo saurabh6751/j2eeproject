@@ -40,5 +40,10 @@ public class TeamServiceImpl implements ITeamService {
 			dao.deleteTeams(teamsById);		
 	}
 	
+	@Override
+	public Teams updateTeamDetails(Teams t) {
+		// TODO Auto-generated method stub
+		return dao.updateTeamDetails(t);
+	}
 
 }

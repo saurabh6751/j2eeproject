@@ -6,6 +6,7 @@ import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+
 @Entity
 @Table(name = "Matches")
 public class Matches {
@@ -13,6 +14,7 @@ public class Matches {
 	private Integer Id;
 	private String umpire;
 	@Temporal(TemporalType.TIMESTAMP)
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm")
 	private Date date;
 	private String location;
 	private Tournaments tournamentId;
@@ -25,17 +27,11 @@ public class Matches {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Matches(String umpire, Date date, String location, Tournaments tournamentId, Scorecard homeTeamScorecard,
-			Scorecard awayTeamScorecard, Teams winner, Teams looser) {
+	public Matches(String umpire, Date date, String location) {
 		super();
 		this.umpire = umpire;
 		this.date = date;
 		this.location = location;
-		this.tournamentId = tournamentId;
-		this.homeTeamScorecard = homeTeamScorecard;
-		this.awayTeamScorecard = awayTeamScorecard;
-		this.winner = winner;
-		this.looser = looser;
 	}
 
 	@Id
@@ -93,6 +89,15 @@ public class Matches {
 	public void setHomeTeamScorecard(Scorecard homeTeamScorecard) {
 		this.homeTeamScorecard = homeTeamScorecard;
 	}
+	//helper methods
+	public void addHomeTeam(Scorecard s)
+	{
+		s.setTeamId(s.getTeamId());
+	}
+	public void removeHomeTeam(Scorecard s)
+	{
+		s.setTeamId(null);
+	}
 	@OneToOne
 	@JoinColumn(name = "away_team_scorecard_id")
 	public Scorecard getAwayTeamScorecard() {
@@ -102,6 +107,15 @@ public class Matches {
 	public void setAwayTeamScorecard(Scorecard awayTeamScorecard) {
 		this.awayTeamScorecard = awayTeamScorecard;
 	}
+	//helper methods
+	public void addAwayTeam(Scorecard s)
+	{
+		s.setTeamId(s.getTeamId());
+	}
+	public void removeAwayTeam(Scorecard s)
+	{
+		s.setTeamId(null);
+	}
 	@OneToOne
 	@JoinColumn(name = "winner_id")
 	public Teams getWinner() {
@@ -110,6 +124,15 @@ public class Matches {
 
 	public void setWinner(Teams winner) {
 		this.winner = winner;
+	}
+	//helper methods
+	public void addWinner(Teams t)
+	{
+		this.setWinner(t);
+	}
+	public void removeWinner(Teams t)
+	{
+		this.setWinner(null);
 	}
 	@OneToOne
 	@JoinColumn(name = "looser_id")

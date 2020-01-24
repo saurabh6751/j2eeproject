@@ -41,4 +41,10 @@ public class NewsServiceImpl implements INewsService{
 		if(newsById != null)
 			dao.deleteNews(newsById);		
 	}
+	
+	@Override
+	public News updateNewsDetails(News n) {
+		// TODO Auto-generated method stub
+		return dao.updateNewsDetails(n);
+	}
 }

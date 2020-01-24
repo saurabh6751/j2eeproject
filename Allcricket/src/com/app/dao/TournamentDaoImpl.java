@@ -44,4 +44,10 @@ public class TournamentDaoImpl implements ITournamentDao {
 	public Tournaments getTournamentsById(int tournamentId) {
 		return sf.getCurrentSession().get(Tournaments.class, tournamentId);
 	}
+	
+	@Override
+	public Tournaments updateTournamentDetails(Tournaments t) {
+		sf.getCurrentSession().update(t);
+		return t;
+	}
 }

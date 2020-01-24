@@ -10,5 +10,5 @@ public interface INewsDao {
 	News addNewNews(News n);
 	void deleteNews(News n);
 	News getNewsById(int newsId);
-
+    News updateNewsDetails(News n);
 }

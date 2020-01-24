@@ -44,4 +44,9 @@ public class TeamDaoImpl implements ITeamDao{
 		public Teams getTeamsById(int teamId) {
 			return sf.getCurrentSession().get(Teams.class, teamId);
 		}
+		@Override
+		public Teams updateTeamDetails(Teams t) {
+			sf.getCurrentSession().update(t);
+			return t;
+		}
 }

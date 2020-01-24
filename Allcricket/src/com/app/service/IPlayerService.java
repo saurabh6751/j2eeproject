@@ -10,5 +10,7 @@ public interface IPlayerService {
 	Players addNewPlayers(Players p);
 	void deletePlayers(int playerId);
 	Players getPlayersById(int playerId);
-
+	List<Players> getPlayersByNAme(String name);
+    Players updatePlayerDetails(Players p);
+    
 }

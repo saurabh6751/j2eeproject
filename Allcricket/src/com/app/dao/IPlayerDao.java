@@ -10,5 +10,6 @@ public interface IPlayerDao {
 	Players addNewPlayers(Players p);
 	void deletePlayers(Players p);
 	Players getPlayersById(int playerId);
-
+	List<Players> getPlayerByName(String name);
+    Players updatePlayerDetails(Players p);
 }

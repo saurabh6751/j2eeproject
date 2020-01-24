@@ -44,6 +44,10 @@ public class NewsDaoImpl implements INewsDao {
 		public News getNewsById(int newsId) {
 			return sf.getCurrentSession().get(News.class,newsId );
 		}
-
+		@Override
+		public News updateNewsDetails(News n) {
+			sf.getCurrentSession().update(n);
+			return n;
+		}
 		
 }

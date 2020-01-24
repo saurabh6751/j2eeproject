@@ -14,4 +14,6 @@ List<Matches> getAllMatches();
 	void deleteMatches(int matchId);
 	
 	Matches getMatchesById(int matchId);
+	
+    Matches updateMatchDetails(Matches m);
 }
