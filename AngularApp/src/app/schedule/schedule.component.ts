@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-schedule',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./schedule.component.css']
 })
 export class ScheduleComponent implements OnInit {
-
-  constructor() { }
-
+  constructor(private s:DataService) { }
+  team:any;
   ngOnInit() {
+    this.s.getMatch().subscribe(r=>{
+      console.log(r);
+      this.team=r;
+    })
   }
-
 }

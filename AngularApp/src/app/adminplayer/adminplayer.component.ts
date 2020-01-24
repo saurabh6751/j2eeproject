@@ -1,63 +1,36 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
+import { rollInOnEnterAnimation } from "angular-animations";
 
 @Component({
   selector: 'app-adminplayer',
   templateUrl: './adminplayer.component.html',
-  styleUrls: ['./adminplayer.component.css']
+  styleUrls: ['./adminplayer.component.css'],
+  animations: [
+    rollInOnEnterAnimation()
+  ]
 })
 export class AdminplayerComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private s:DataService) { }
+  player:any;
   ngOnInit() {
+  this.getData()
   }
-  player=[{
-    id:1,
-    age:23,
-    name:"mahesh",
-    contact:"982334567",
-    dob:"03-03-1996",
-    role:"BATSMAN",
-    teamId:23
-  },{
-    id:1,
-    age:23,
-    name:"mahesh",
-    contact:"982334567",
-    dob:"03-03-1996",
-    role:"BATSMAN",
-    teamId:23
-  },{
-    id:1,
-    age:23,
-    name:"mahesh",
-    contact:"982334567",
-    dob:"03-03-1996",
-    role:"BATSMAN",
-    teamId:23
-  },{
-    id:1,
-    age:23,
-    name:"mahesh",
-    contact:"982334567",
-    dob:"03-03-1996",
-    role:"BATSMAN",
-    teamId:23
-  },{
-    id:1,
-    age:23,
-    name:"mahesh",
-    contact:"982334567",
-    dob:"03-03-1996",
-    role:"BATSMAN",
-    teamId:23
-  },{
-    id:1,
-    age:23,
-    name:"mahesh",
-    contact:"982334567",
-    dob:"03-03-1996",
-    role:"BATSMAN",
-    teamId:23
-  }]
+  getData()
+  {
+    this.s.getPlayers().subscribe(r=>{
+      console.log(r);
+      this.player=r;
+    })
+  }
+  delete(no){
+    const res = confirm("Are you sure want to delete Player with ID : "+no);
+    if(res==true){
+      this.s.deletePlayerById(no).subscribe((res)=>{
+        this.getData();
+      })
+    }
+    
+  }
 }

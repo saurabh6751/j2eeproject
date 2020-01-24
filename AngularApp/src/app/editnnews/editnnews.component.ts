@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-editnnews',
@@ -7,16 +9,41 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditnnewsComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(public activeRoute:ActivatedRoute,
+    public service:DataService,
+    public router:Router) { }
+    no:any;
+    n:any;
+    image:any;
   ngOnInit() {
-  }
-  news={
-    id:1,
-    date:"10-12-2019",
-    category:"cricket stadiums",
-    heading:"biggest stadium in world built in ahmedabad",
-    descrption:"India has a mix color of sports like famous guli danda to the International cricket, though cricket is heartbeat of the nation but kockey is also very popular game in India along with football. Apart from the above few games, India is home for second largest football stadium in the world named as Salt Lake Stadium in Kolkata. Some of the multi purpose stadium has been constructed in India to boost the other Olympic sports. Here are list of biggest sports stadium in India capacity wise."
-};
+    this.activeRoute.paramMap.subscribe((params)=>{
+      this.no=params.get("no");
 
+      this.service.getNewsById(this.no).subscribe((res)=>{
+
+        console.log(res);
+        this.n=res;
+        
+        console.log(this.n);
+
+      })
+
+
+    })
+
+  }
+  onSelectFile(event) {
+    this.image = event.target.files[0];
+  }
+  
+  update(){
+    this.n.no=this.no;
+     this.service.updateNews(this.n,this.image).subscribe((res)=>{
+       console.log(res);
+       this.router.navigate(['/admin/home/news']);
+  
+     })
+  
+   }
+  
 }

@@ -17,18 +17,20 @@ export class LoginComponent implements OnInit {
   ngOnInit() 
   {
   }
-
+  
   SignIn(loginForm)
   {
     let loginCredentials = loginForm.form.value;
     console.log(loginCredentials);
 
-    let isUserValid= this.service.CheckCredentialsWithDB(loginCredentials);
+    let isUserValid = this.service.CheckCredentialsWithDB(loginCredentials);
+
+    console.log(isUserValid)
     if(isUserValid)
     {
       console.log("User Is Valid");
       
-      this.router.navigate(['/admin/home']); 
+      
     }
     else{
       this.message = "User Name / Password is Invalid!";

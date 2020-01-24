@@ -1,29 +1,26 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
+import { slideInRightOnEnterAnimation } from 'angular-animations';
+
 
 @Component({
   selector: 'app-news',
   templateUrl: './news.component.html',
-  styleUrls: ['./news.component.css']
+  styleUrls: ['./news.component.css'],
+  animations:[
+    slideInRightOnEnterAnimation()
+    ]
 })
 export class NewsComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private s:DataService) { }
+  news:any;
   ngOnInit() {
-  }
-   myFunction() {
-    var dots = document.getElementById("dots");
-    var moreText = document.getElementById("more");
-    var btnText = document.getElementById("myBtn");
-  
-    if (dots.style.display === "none") {
-      dots.style.display = "inline";
-      btnText.innerHTML = "Read more"; 
-      moreText.style.display = "none";
-    } else {
-      dots.style.display = "none";
-      btnText.innerHTML = "Read less"; 
-      moreText.style.display = "inline";
-    }
+    this.s.getNews().subscribe(r=>{
+      console.log(r);
+      this.news = r;
+      console.log(this.news);
+
+    })
   }
 }

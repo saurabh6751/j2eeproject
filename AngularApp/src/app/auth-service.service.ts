@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, RouterStateSnapshot, ActivatedRouteSnapshot, Router } from '@angular/router';
-
+import { DataService } from "./data.service";
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService  implements CanActivate
 {
-  constructor(private router:Router) { }
+  constructor(private router:Router,private s:DataService) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot)
   {
@@ -37,20 +37,30 @@ export class AuthService  implements CanActivate
       return false;
     }
   }
-
+  result:any;
   CheckCredentialsWithDB(credentials)
   {
     //Call Some  Service using Post Method
     //to check credentials with DB 
-    if(credentials.email == "ab" && credentials.password == "ab@123")
-    {
-      window.sessionStorage.setItem("isActive", "1");
-      return true;
-    }
-    else
-    {
-      return false;
-    }
+    console.log(credentials);
+    this.s.validate(credentials).subscribe(r=>{
+      this.result = r;
+      console.log(this.result)
+      if(this.result!=null)
+      {
+        window.sessionStorage.setItem("isActive", "1");
+        window.sessionStorage.setItem("name",this.result.userName)
+        this.router.navigate(['/admin/home']);
+      }
+      else
+      {
+        return false;
+      }
+  
+    })
+    return false;
+
+   
   }
 
   Logout()

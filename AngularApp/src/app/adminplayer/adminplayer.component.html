@@ -1,5 +1,5 @@
-<div style="background-color: cyan" class="text-center"><h1>Teams</h1></div>
-<table class="table table-striped table-hover table-responsive">
+<div style="background-color: cyan" class="text-center"><h1>Players</h1></div>
+<table class="table table-striped table-hover table-responsive" [@rollInOnEnter]="{ value: '', params: { duration: 300, delay: 60, translate: '768px' } }">
     <thead>
         <tr>
                 <th>id</th>
@@ -9,7 +9,7 @@
                 <th>photo</th>
                 <th>dob</th>
                 <th>role</th>
-                <th>teamId</th>
+                <th>Team name</th>
               
       </tr>
     </thead>
@@ -19,13 +19,16 @@
                 <td>{{n.age}}</td>
                 <td>{{n.name}}</td>
                 <td>{{n.contact}}</td>
-                <td><img src="assets/image/3.jpg" style="height: 100px;width: 100px;"></td>
+                <td><img style="height: 90px;width: 90px" src="data:image/gif;base64,{{n.photo}}" alt=""></td>
                 <td>{{n.dob}}</td>
                 <td>{{n.role}}</td>
-                <td>{{n.teamId}}</td>
-                
-                <td><a routerLink="/admin/home/editplayer/{{n.id}}">Edit</a></td>
-                <td><a >Delete</a></td>
+                <td>{{n.teamId.name}}</td>
+                <td>
+                    <button class="btn btn-warning" routerLink="/admin/home/editplayer/{{n.id}}">Update</button>
+                </td>
+                <td>
+                        <button type="button" (click)="delete(n.id)" class="btn btn-danger">Delete</button>
+                        </td>
         </tr>
     </tbody>
 </table>

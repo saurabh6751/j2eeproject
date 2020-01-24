@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth-service.service';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-adminhome',
@@ -7,10 +8,10 @@ import { AuthService } from '../auth-service.service';
   styleUrls: ['./adminhome.component.css']
 })
 export class AdminhomeComponent implements OnInit {
-
-  constructor(private service:AuthService) { }
-
+  name:any;
+  constructor(private service:AuthService,private s:DataService) { }
   ngOnInit() {
+      
   }
 
   signout()

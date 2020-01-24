@@ -1,215 +1,36 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
+import { fadeInOnEnterAnimation } from "angular-animations";
 
 @Component({
   selector: 'app-adminmatch',
   templateUrl: './adminmatch.component.html',
-  styleUrls: ['./adminmatch.component.css']
+  styleUrls: ['./adminmatch.component.css'],
+  animations:[
+    fadeInOnEnterAnimation()
+  ]
 })
 export class AdminmatchComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private s:DataService) { }
+  team:any;
   ngOnInit() {
+   this.getData()
   }
-  match=[{
-    id:1,
-    umpire:"digvijay sir",
-    date:"02-02-2019",
-    location:"turf up",
-    result:"D4 won by 23 runs",
-    hometeam:"D4",
-    awayteam:"A2"
-  },{
-    id:1,
-    umpire:"digvijay sir",
-    date:"02-02-2019",
-    location:"turf up",
-    result:"D4 won by 23 runs",
-    hometeam:"D4",
-    awayteam:"A2"
-  },{
-    id:1,
-    umpire:"digvijay sir",
-    date:"02-02-2019",
-    location:"turf up",
-    result:"D4 won by 23 runs",
-    hometeam:"D4",
-    awayteam:"A2"
-  },{
-    id:1,
-    umpire:"digvijay sir",
-    date:"02-02-2019",
-    location:"turf up",
-    result:"D4 won by 23 runs",
-    hometeam:"D4",
-    awayteam:"A2"
-  },{
-    id:1,
-    umpire:"digvijay sir",
-    date:"02-02-2019",
-    location:"turf up",
-    result:"D4 won by 23 runs",
-    hometeam:"D4",
-    awayteam:"A2"
-  },{
-    id:1,
-    umpire:"digvijay sir",
-    date:"02-02-2019",
-    location:"turf up",
-    result:"D4 won by 23 runs",
-    hometeam:"D4",
-    awayteam:"A2"
-  },{
-    id:1,
-    umpire:"digvijay sir",
-    date:"02-02-2019",
-    location:"turf up",
-    result:"D4 won by 23 runs",
-    hometeam:"D4",
-    awayteam:"A2"
-  },{
-    id:1,
-    umpire:"digvijay sir",
-    date:"02-02-2019",
-    location:"turf up",
-    result:"D4 won by 23 runs",
-    hometeam:"D4",
-    awayteam:"A2"
-  },{
-    id:1,
-    umpire:"digvijay sir",
-    date:"02-02-2019",
-    location:"turf up",
-    result:"D4 won by 23 runs",
-    hometeam:"D4",
-    awayteam:"A2"
-  },{
-    id:1,
-    umpire:"digvijay sir",
-    date:"02-02-2019",
-    location:"turf up",
-    result:"D4 won by 23 runs",
-    hometeam:"D4",
-    awayteam:"A2"
-  },{
-    id:1,
-    umpire:"digvijay sir",
-    date:"02-02-2019",
-    location:"turf up",
-    result:"D4 won by 23 runs",
-    hometeam:"D4",
-    awayteam:"A2"
-  },{
-    id:1,
-    umpire:"digvijay sir",
-    date:"02-02-2019",
-    location:"turf up",
-    result:"D4 won by 23 runs",
-    hometeam:"D4",
-    awayteam:"A2"
-  },{
-    id:1,
-    umpire:"digvijay sir",
-    date:"02-02-2019",
-    location:"turf up",
-    result:"D4 won by 23 runs",
-    hometeam:"D4",
-    awayteam:"A2"
-  },{
-    id:1,
-    umpire:"digvijay sir",
-    date:"02-02-2019",
-    location:"turf up",
-    result:"D4 won by 23 runs",
-    hometeam:"D4",
-    awayteam:"A2"
-  },{
-    id:1,
-    umpire:"digvijay sir",
-    date:"02-02-2019",
-    location:"turf up",
-    result:"D4 won by 23 runs",
-    hometeam:"D4",
-    awayteam:"A2"
-  },{
-    id:1,
-    umpire:"digvijay sir",
-    date:"02-02-2019",
-    location:"turf up",
-    result:"D4 won by 23 runs",
-    hometeam:"D4",
-    awayteam:"A2"
-  },{
-    id:1,
-    umpire:"digvijay sir",
-    date:"02-02-2019",
-    location:"turf up",
-    result:"D4 won by 23 runs",
-    hometeam:"D4",
-    awayteam:"A2"
-  },{
-    id:1,
-    umpire:"digvijay sir",
-    date:"02-02-2019",
-    location:"turf up",
-    result:"D4 won by 23 runs",
-    hometeam:"D4",
-    awayteam:"A2"
-  },{
-    id:1,
-    umpire:"digvijay sir",
-    date:"02-02-2019",
-    location:"turf up",
-    result:"D4 won by 23 runs",
-    hometeam:"D4",
-    awayteam:"A2"
-  },{
-    id:1,
-    umpire:"digvijay sir",
-    date:"02-02-2019",
-    location:"turf up",
-    result:"D4 won by 23 runs",
-    hometeam:"D4",
-    awayteam:"A2"
-  },{
-    id:1,
-    umpire:"digvijay sir",
-    date:"02-02-2019",
-    location:"turf up",
-    result:"D4 won by 23 runs",
-    hometeam:"D4",
-    awayteam:"A2"
-  },{
-    id:1,
-    umpire:"digvijay sir",
-    date:"02-02-2019",
-    location:"turf up",
-    result:"D4 won by 23 runs",
-    hometeam:"D4",
-    awayteam:"A2"
-  },{
-    id:1,
-    umpire:"digvijay sir",
-    date:"02-02-2019",
-    location:"turf up",
-    result:"D4 won by 23 runs",
-    hometeam:"D4",
-    awayteam:"A2"
-  },{
-    id:1,
-    umpire:"digvijay sir",
-    date:"02-02-2019",
-    location:"turf up",
-    result:"D4 won by 23 runs",
-    hometeam:"D4",
-    awayteam:"A2"
-  },{
-    id:1,
-    umpire:"digvijay sir",
-    date:"02-02-2019",
-    location:"turf up",
-    result:"D4 won by 23 runs",
-    hometeam:"D4",
-    awayteam:"A2"
-  }];
+  getData()
+  {
+    this.s.getMatch().subscribe(r=>{
+      console.log(r);
+      this.team=r;
+    })
+  }
+  delete(no){
+    const res = confirm("Are you sure want to delete Match with ID : "+no);
+    if(res==true){
+      this.s.deleteMatchById(no).subscribe((res)=>{
+        this.getData();
+      })
+    }
+    
+  }
 }

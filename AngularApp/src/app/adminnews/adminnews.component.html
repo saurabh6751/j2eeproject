@@ -13,14 +13,13 @@
     </thead>
     <tbody>
         <tr *ngFor="let n of news">
-                <td>{{ n.id}}</td>
+                <td>{{n.id}}</td>
                 <td>{{n.date}}</td>
                 <td>{{n.category  | titlecase }}</td>
                 <td>{{n.heading | titlecase}}</td>
-                <td><img src="assets/image/1.jpg" style="height: 200px;width: 300px;"></td>
-                <td>{{n.descrption}}</td>
-                <td><a routerLink="/admin/home/editnews/{{n.id}}">Edit</a></td>
-                <td><a >Delete</a></td>
+                <td><img style="height: 90px;width: 100%" src="data:image/gif;base64,{{n.image}}" alt=""><br>                <td>{{n.description}}</td>
+                <td><button class="btn btn-warning" routerLink="/admin/home/editnews/{{n.id}}">Edit</button></td>
+                <td>        <button type="button" (click)="delete(n.id)"class="btn btn-danger">Delete</button></td>
         </tr>
     </tbody>
 </table>

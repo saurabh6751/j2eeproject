@@ -3,11 +3,11 @@ import { DataService } from '../data.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-playerinfo',
-  templateUrl: './playerinfo.component.html',
-  styleUrls: ['./playerinfo.component.css']
+  selector: 'app-news-info',
+  templateUrl: './news-info.component.html',
+  styleUrls: ['./news-info.component.css']
 })
-export class PlayerinfoComponent implements OnInit {
+export class NewsInfoComponent implements OnInit {
 
   constructor(private s:DataService,private route:ActivatedRoute) { }
   n:any;
@@ -15,7 +15,7 @@ export class PlayerinfoComponent implements OnInit {
     this.route.paramMap.subscribe((result)=>{
       let No= result.get("No");
       console.log(No);
-    this.s.getPlayerById(No).subscribe(r=>{
+    this.s.getNewsById(No).subscribe(r=>{
       console.log(r);
       this.n=r;
       })

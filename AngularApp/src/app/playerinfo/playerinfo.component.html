@@ -1,12 +1,24 @@
-<H1 class="text-center" style="background-color: deepskyblue">PLayer profile</H1>
+<H1 class="text-center" style="background-color: deepskyblue">Player profile</H1>
+
+
+
 
 <div class="container">
-    <h2>ID:23</h2>
-    <img src="assets/image/st.jpg" alt="">
-    <h3>NAME: Saurabh Thombare</h3>
-    <h2>TEAM NAME: MI</h2>
-    <h2>AGE: 23</h2>
-    <h2>ROLE: ALL ROUNDER</h2>
+    <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4" style="background-color: violet;color: white">
+               <h4> Player ID : {{n.id}}</h4>
+            <img style="height: 250px;width: 300px" src="data:image/gif;base64,{{n.photo}}" alt="">
+            <h4>Name : {{n.name}}</h4>
+            <h4>Age  : {{n.age}}</h4>
+            <h4>contact : {{n.contact}}</h4>
+            <h4>Date Of Birth: {{n.dob | date}}</h4>
+            <h4>Role In Team :{{n.role}}</h4>
+            <h4><a routerLink="/teaminfo/{{n.teamId.id}}">Team Name :{{n.teamId.name}}</a></h4>
+            
+    </div>
+    <div class="col-md-4"></div>
+    </div>
 </div>
 
 

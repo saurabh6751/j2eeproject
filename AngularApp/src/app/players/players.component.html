@@ -1,94 +1,10 @@
-<div>
-        <h2 class="text-center" style="background-color:blueviolet">Players</h2>
+<div style="background-color: cyan" class="text-center"><h1>Players</h1></div>
 
-</div>
-<div class="box grid_16 single_datatable no_titlebar" style="opacity: 1;">
-        <div class="no_margin" id="dt1">
-            <div class="dataTables_wrapper">
-                <div class="dataTables_scroll">
-                    <div>
-                        <table cellpadding="0" cellspacing="0" border="0" class="display "
-                            class="table table-striped table-hover" id="example" style="width: 100%">
-                            <thead>
-                                <tr>
-                                    <th style="text-align: center; width: 10%">Player Id</th>
-                                    <th style="text-align: center;width: 10%">Player Name</th>
-                                    <th style="text-align: center;width: 10%">Player Photo</th>
-                                    <th style="text-align: center;width: 10%">DOB</th>
-                                    <th style="text-align: center;width: 10%">Age</th>
-                                    <th style="text-align: center;width: 10%">Role</th>
-                                    <th style="text-align: center;width: 10%">Contact</th>
-                                </tr>
-                            </thead>
-                            <tbody style="text-align: center;">
-                                <tr>
-                                    <td>1</td>
-                                    <td><a href="">Saurabh</a></td>
-                                    <td> <img src="assets/image/st.jpg" style="width: 50px"> </td>
-                                    <td>1 Jan 1996</td>
-                                    <td>24</td>
-                                    <td>Batsman</td>
-                                    <td>123456789</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td><a href="">Saurabh</a></td>
-                                    <td> <img src="assets/image/st.jpg" style="width: 50px"> </td>
-                                    <td>1 Jan 1996</td>
-                                    <td>24</td>
-                                    <td>Batsman</td>
-                                    <td>123456789</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td><a href="">Saurabh</a></td>
-                                    <td> <img src="assets/image/st.jpg" style="width: 50px"> </td>
-                                    <td>1 Jan 1996</td>
-                                    <td>24</td>
-                                    <td>Batsman</td>
-                                    <td>123456789</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td><a href="">Saurabh</a></td>
-                                    <td> <img src="assets/image/st.jpg" style="width: 50px"> </td>
-                                    <td>1 Jan 1996</td>
-                                    <td>24</td>
-                                    <td>Batsman</td>
-                                    <td>123456789</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td><a href="">Saurabh</a></td>
-                                    <td> <img src="assets/image/st.jpg" style="width: 50px"> </td>
-                                    <td>1 Jan 1996</td>
-                                    <td>24</td>
-                                    <td>Batsman</td>
-                                    <td>123456789</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td><a href="">Saurabh</a></td>
-                                    <td> <img src="assets/image/st.jpg" style="width: 50px"> </td>
-                                    <td>1 Jan 1996</td>
-                                    <td>24</td>
-                                    <td>Batsman</td>
-                                    <td>123456789</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td><a href="">Saurabh</a></td>
-                                    <td> <img src="assets/image/st.jpg" style="width: 50px"> </td>
-                                    <td>1 Jan 1996</td>
-                                    <td>24</td>
-                                    <td>Batsman</td>
-                                    <td>123456789</td>
-                                </tr>
-                              
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+<div class="card zoom col-md-2" style="border-radius: 2px;background-color:rgb(206, 236, 233);height: 200px;" *ngFor="let n of player">
+        <td><img src="data:image/gif;base64,{{n.photo}}" alt="" style="height:100px;width: 160px;"></td>
+        <div class="text-center">
+          <h4 class="card-title">{{n.name}}</h4>
+          <p class="card-text" style="height: 15px">{{n.teamId.name}}</p>
+          <a routerLink="/playerinfo/{{n.id}}" class="btn btn-primary">See Profile</a>
         </div>
-    </div>
+      </div>

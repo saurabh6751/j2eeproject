@@ -1,49 +1,37 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
+import { fadeInOnEnterAnimation } from "angular-animations";
 
 @Component({
   selector: 'app-adminteam',
   templateUrl: './adminteam.component.html',
-  styleUrls: ['./adminteam.component.css']
+  styleUrls: ['./adminteam.component.css'],
+  animations:[
+    fadeInOnEnterAnimation()
+ ]
 })
 export class AdminteamComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private s:DataService) { }
+  team:any
   ngOnInit() {
+    this.getData()
   }
-  team=[{
-    id:1,
-    name:"Mumbai indians",
-    location:"Mumbai",
-    owner:"Vijay malya",
-    coach:"raxit patel"
-  },
+  getData()
   {
-    id:2,
-    name:"Mumbai indians",
-    location:"Mumbai",
-    owner:"Vijay malya",
-    coach:"raxit patel"
-  },
-  {
-    id:3,
-    name:"Mumbai indians",
-    location:"Mumbai",
-    owner:"Vijay malya",
-    coach:"raxit patel"
-  },
-  {
-    id:4,
-    name:"Mumbai indians",
-    location:"Mumbai",
-    owner:"Vijay malya",
-    coach:"raxit patel"
-  },
-  {
-    id:5,
-    name:"Mumbai indians",
-    location:"Mumbai",
-    owner:"Vijay malya",
-    coach:"raxit patel"
-  },]
+    this.s.getTeams().subscribe(r=>{
+          console.log(r);
+          this.team = r;
+        }
+      )
+  }
+  delete(no){
+    const res = confirm("Are you sure want to delete Team with ID : "+no);
+    if(res==true){
+      this.s.deleteTeams(no).subscribe((res)=>{
+        this.getData();
+      })
+    }
+    
+  }
 }

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from "@angular/forms";
+import { NgModule, Component } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -46,6 +46,9 @@ import { PlayerinfoComponent } from './playerinfo/playerinfo.component';
 import { ContactusComponent } from './contactus/contactus.component';
 import { TornamentmatchesComponent } from './tornamentmatches/tornamentmatches.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+import { NewsInfoComponent } from './news-info/news-info.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -88,12 +91,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     PlayercardComponent,
     PlayerinfoComponent,
     ContactusComponent,
-    TornamentmatchesComponent
+    TornamentmatchesComponent,
+    NewsInfoComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     RouterModule.forRoot([
       {
@@ -105,15 +112,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
             { path: "livescores", component: LiveScoresComponent },
             { path: "schedule", component: ScheduleComponent },
             { path: "news", component: NewsComponent },
+            { path: "newsinfo/:No", component: NewsInfoComponent },
             { path: "series", component: SeriesComponent },
             { path: "pointstable", component: PintstableComponent },
             { path: "teams", component: TeamComponent },
+            { path: "teaminfo/:No",component: TeamlistComponent},
             { path: "rankings", component: RankingsComponent },
             { path: "players", component: PlayersComponent },
-            { path: "playercard", component: PlayercardComponent},
-            { path:"playerinfo", component: PlayerinfoComponent},
+            { path: "search", component: PlayercardComponent},
+            { path:"playerinfo/:No", component: PlayerinfoComponent},
             { path: "contactus", component: ContactusComponent},
-            { path: 'tornamentmatch', component: TornamentmatchesComponent}]
+            { path: 'tournamentinfo/:No', component: TornamentmatchesComponent}]
             
       },
       { path: "admin", component: LoginComponent },
@@ -141,6 +150,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
             { path: "player", component: AdminplayerComponent,canActivate:[AuthService] },
             { path: "match", component:AdminmatchComponent,canActivate:[AuthService]}]
       },
+      { path:"**",component:PageNotFoundComponent}
 
 
     ])

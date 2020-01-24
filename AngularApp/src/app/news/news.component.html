@@ -1,98 +1,26 @@
- 	
-<div class="text-center" style="background-color: cyan"><h1>News</h1></div>
-
-    <table cellpadding="0" cellspacing="0" border="3" class="display "
-    class="table table-striped table-hover" id="example" style="width: 100%">
-      <tr>
-        <td>
-          <div>
-              <img src="assets/image/3.jpg" style="width: 300px">
-          </div>
-          
-        </td>
-        <td>
-          <div>
-              <div class="cb-col cb-col-33" itemscope=""
-              itemtype="https://schema.org/ImageObject" itemprop="image">
-              <meta itemprop="width" content="205">
-              <meta itemprop="height" content="152">
-              <meta itemprop="url"
-                  content="assets/image/3.jpg">
-
-              <a target="_self"
-                  href="/cricket-news/111821/why-has-rabada-not-learnt-from-the-smith-incident"
-                  title="Why has Rabada not learnt from the Smith incident?"><img
-                      height="152" width="205"
-                      alt="&quot;I can't keep doing this because I am letting the team down and I am letting myself down,&quot; Rabada had said after the Smith incident."
-                      title="&quot;I can't keep doing this because I am letting the team down and I am letting myself down,&quot; Rabada had said after the Smith incident."
-                      itemprop="image" class="cb-lst-img"
-                      src="/a/img/v1/205x152/i1/c185570/i-cant-keep-doing-this-becau.jpg"
-                      style="padding:0px;"></a></div>
-          <div class="cb-col-67 cb-nws-lst-rt cb-col cb-col-text-container">
-              <div class="cb-nws-time">FEATURES<span
-                      class="cb-dot">&nbsp;•&nbsp;</span>IT'S ABOUT TIME</div>
-              <h2 class="cb-nws-hdln cb-font-18 line-ht24"><a target="_self"
-                      class="cb-nws-hdln-ancr text-hvr-underline"
-                      href="/cricket-news/111821/why-has-rabada-not-learnt-from-the-smith-incident"
-                      title="Why has Rabada not learnt from the Smith incident?">Why
-                      has Rabada not learnt from the Smith incident?</a></h2>
-              <div class="cb-nws-intr">We can huff and puff about the ICC sucking the
-                  marrow out of the game's bones with their snowflake sensibilities
-                  but the code of conduct will still be the law of cricketland</div>
-              <div><span class="cb-nws-time">18m ago</span></div>
-          </div>
-          </div>
-        </td>
-      </tr>
-      <hr >
-      <tr>
-        <td>
-            <img src="assets/image/3.jpg" style="width: 300px">
-
-        </td>
-        <td>
-            <div class="cb-col-67 cb-nws-lst-rt cb-col cb-col-text-container">
-                <div class="cb-nws-time"><a target="_self" class="cb-text-link"
-                        href="/cricket-news/editorial/match-reports"
-                        title="MATCH REPORTS">MATCH REPORTS</a><span
-                        class="cb-dot">&nbsp;•&nbsp;</span>SA VS ENG, 3RD TEST</div>
-                <h2 class="cb-nws-hdln cb-font-18 line-ht24"><a target="_self"
-                        class="cb-nws-hdln-ancr text-hvr-underline"
-                        href="/cricket-news/111820/popes-maiden-ton-stretches-englands-control"
-                        title="Pope's maiden ton stretches England's control ">Pope's
-                        maiden ton stretches England's control </a></h2>
-                <div class="cb-nws-intr">Ollie Pope followed Ben Stokes past the century
-                    mark to put England on top</div>
-                <div><span class="cb-nws-time">2h ago</span></div>
-            </div>
-        </td>
-       
-      </tr>
-      <hr>
-      <tr>
-          <td>
-              <img src="assets/image/3.jpg" style="width: 300px">
-  
-          </td>
-          <td>
-              <div class="cb-col-67 cb-nws-lst-rt cb-col cb-col-text-container">
-                  <div class="cb-nws-time"><a target="_self" class="cb-text-link"
-                          href="/cricket-news/editorial/match-reports"
-                          title="MATCH REPORTS">MATCH REPORTS</a><span
-                          class="cb-dot">&nbsp;•&nbsp;</span>U19 WORLD CUP, 2020</div>
-                  <h2 class="cb-nws-hdln cb-font-18 line-ht24"><a target="_self"
-                          class="cb-nws-hdln-ancr text-hvr-underline"
-                          href="/cricket-news/111819/legspinner-shafiqullah-ghafari-six-fer-helps-afghanistan-beat-south-africa-in-u19-world-cup-opener-match-report"
-                          title="Ghafari six-fer helps Afghanistan beat SA in U19 WC opener">Ghafari
-                          six-fer helps Afghanistan beat SA in U19 WC opener</a></h2>
-                  <div class="cb-nws-intr">The hosts slipped from 62/2 to 90/8 in no time,
-                      before folding for a meagre 129</div>
-                  <div><span class="cb-nws-time">2h ago</span></div>
-              </div>
-          </td>
-         
-        </tr>
-    </table>
+<h2 class="text-center" [@slideInRightOnEnter]="{ value: '', params: { duration: 300, delay: 0, translate: '768px' } }" style="background-color: aqua">News</h2>
 
 
+
+
+<div class="container" [@slideInRightOnEnter]="{ value: '', params: { duration: 300, delay: 300, translate: '768px' } }">
     
+    <div class="row" *ngFor="let n of news" style="margin-top: 10px" >
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-4">
+                    <td><img style="height: 150px;width: 250px" src="data:image/gif;base64,{{n.image}}" alt=""><br>                
+        </div>
+        <div class="col-md-4" >
+                <h4>{{n.heading | titlecase}}</h4>
+                <h5>{{n.date | date}}</h5>
+                <br>
+                <button routerLink="/newsinfo/{{n.id}}" class="btn btn-success">Read more</button>
+        </div>
+        <div class="col-md-2">
+        </div>
+
+    </div>
+    
+</div>
+

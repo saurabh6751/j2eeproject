@@ -2,16 +2,11 @@
 
 @import './assets/bootstrap.min.css';
 .zoom {
-    background-color: rgb(120, 194, 181);
     transition: transform .2s; 
-    padding-left: 20px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    margin-top: 40px;/* Animation */
+    margin: 10px
   }
   
   .zoom:hover {
-    transform: scale(1.008); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
-   border: 2px solid #304f8a;
-  border-radius: 5px;
+    transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+ 
   }

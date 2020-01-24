@@ -1,5 +1,5 @@
 <div class="text-center" style="background-color: cadetblue">
-    <h1>Statistics</h1>
+    <h1>Welcome {{name}}, Dashboard</h1>
 </div>
 
 
@@ -10,42 +10,42 @@
 </div>
 
 <div class="card col-md-4">
-    <div class="card zoom text-center">
+    <div class="card zoom text-center" style="background-color: aqua;margin-top: 10px" [@flipInXOnEnter]="{ value: '', params: { duration: 3000, delay: 60, translate: '768px' } }">
         <div class="card-body" >
             <h4 class="card-title"> Total tournaments </h4>
-            <p class="card-text">200</p>
+            <p class="card-text">{{noT.count}}</p>
             <a routerLink="/admin/home/series" class="card-link">View Tournaments</a>
         </div>
         </div>
-        <div class="card zoom text-center">
+        <div class="card zoom text-center" style="background-color: aqua;margin-top: 10px" [@flipInXOnEnter]="{ value: '', params: { duration: 4000, delay: 60, translate: '768px' } }">
             <div class="card-body">
                 <h4 class="card-title">     Total matches
                 </h4>
-                <p class="card-text">1000</p>
+                <p class="card-text">{{noM.count}}</p>
                 <a routerLink="/admin/home/match" class="card-link">View matches</a>
             </div>
             </div>
     
-            <div class="card zoom text-center">
+            <div class="card zoom text-center" style="background-color: aqua;margin-top: 10px" [@flipInXOnEnter]="{ value: '', params: { duration: 5000, delay: 60, translate: '768px' } }">
                 <div class="card-body">
                     <h4 class="card-title"> Total players </h4>
-                    <p class="card-text">1024</p>
+                    <p class="card-text">{{noP.count}}</p>
                     <a routerLink="/admin/home/player" class="card-link">View players</a>
                 </div>
                 </div>
     
-                <div class="card zoom text-center">
+                <div class="card zoom text-center" style="background-color: aqua;margin-top: 10px" [@flipInXOnEnter]="{ value: '', params: { duration: 6000, delay: 60, translate: '768px' } }">
                     <div class="card-body">
                         <h4 class="card-title"> Total teams </h4>
-                        <p class="card-text">203</p>
+                        <p class="card-text">{{noTeam.count}}</p>
                         <a routerLink="/admin/home/teams" class="card-link">View teams</a>
                     </div>
                 </div>
 
-                <div class="card zoom text-center">
+                <div class="card zoom text-center" style="background-color: aqua;margin-top: 10px" [@flipInXOnEnter]="{ value: '', params: { duration: 7000, delay: 60, translate: '768px' } }">
                     <div class="card-body">
                         <h4 class="card-title"> Total news </h4>
-                        <p class="card-text">158</p>
+                        <p class="card-text">{{noT.count}}</p>
                         <a routerLink="/admin/home/news" class="card-link">View news</a>
                     </div>
                 </div>

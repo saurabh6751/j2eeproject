@@ -1,1 +1,29 @@
-<p>teamlist works!</p>
+
+
+
+
+<div class="container">
+    <div class="row">
+            <div style="background-color: cyan" class="text-center"><h1>Team Information</h1></div>
+
+    <div class="col-md-4" style="background-color: violet;color: white">
+               <h4> Team ID : {{n.id}}</h4>
+            <img style="height: 250px;width: 300px" src="data:image/gif;base64,{{n.logo}}" alt="">
+            <h4>Name : {{n.name}}</h4>
+            <h4>coach  : {{n.coach}}</h4>
+            <h4>location : {{n.location}}</h4>
+            <h4>owner: {{n.owner}}</h4>
+    </div>
+    <div class="col-md-8"></div>
+    <div  class="text-center"><h4>Players</h4></div>
+
+<div class="card zoom col-md-2" style="border-radius: 2px;background-color:rgb(206, 236, 233);height: 200px;" *ngFor="let n of p">
+        <td><img src="data:image/gif;base64,{{n.photo}}" alt="" style="height:80px;width: 125px;"></td>
+        <div class="text-center">
+                <h4 class="card-title">{{n.name}}</h4>
+                <h4 class="card-title">{{n.role}}</h4>
+                <a routerLink="/playerinfo/{{n.id}}" class="btn btn-primary">See Profile</a>
+        </div>
+      </div>
+    </div>
+</div>

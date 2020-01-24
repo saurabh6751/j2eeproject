@@ -1,5 +1,5 @@
 <div style="background-color: cyan" class="text-center"><h1>Teams</h1></div>
-<table class="table table-striped table-hover table-responsive">
+<table class="table table-striped table-hover table-responsive" [@fadeInOnEnter]="{ value: '', params: { duration: 2000, delay: 60, translate: '768px' } }">
     <thead>
         <tr>
                 <th>id</th>
@@ -18,9 +18,12 @@
                 <td>{{n.location}}</td>
                 <td>{{n.owner}}</td>
                 <td>{{n.coach}}</td>
-                <td><img src="assets/image/2.jpg" style="height: 100px;width: 100px;"></td>
-                <td><a routerLink="/admin/home/editteam/{{n.id}}">Edit</a></td>
-                <td><a >Delete</a></td>
+                <td><img style="height: 90px;width: 100px" src="data:image/gif;base64,{{n.logo}}" alt=""><br>                <td>{{n.description}}</td>
+                <td>
+                    <button type="button" routerLink="/admin/home/editteam/{{n.id}}" class="btn btn-warning">Update</button>
+                </td>
+                <td>
+                        <button type="button" (click)="delete(n.id)"class="btn btn-danger">Delete</button>                </td>
         </tr>
     </tbody>
 </table>
